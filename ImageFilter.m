@@ -37,7 +37,7 @@ if num_nonzero == 1 % --> Se Filtro h Separável ---------------------------
     h_hori_rep = repmat(h_hori,size(img0,1),1);
     % Convolução Horizontal 
     for i=1:xsize_img0
-        img_conv_h(:,i) = sum(h_hori_rep.*img0_bord(1+1:1+ysize_img0,i:i+xsize_h-1),2);
+        img_conv_h(:,i) = sum(h_hori_rep.*img0_bord(1+floor(ysize_h/2):floor(ysize_h/2)+ysize_img0,i:i+xsize_h-1),2); % 1=ysize_h/2
     end
 
 
@@ -48,7 +48,7 @@ if num_nonzero == 1 % --> Se Filtro h Separável ---------------------------
     h_vert_rep = repmat(h_vert,1,size(img_conv_h,2));
     % Convolução Vertical
     for i=1:ysize_img0
-        img_conv_hv(i,:) = sum(h_vert_rep.*img_conv_h_bord(i:i+ysize_h-1,1+1:1+xsize_img0),1);
+        img_conv_hv(i,:) = sum(h_vert_rep.*img_conv_h_bord(i:i+ysize_h-1,1+floor(xsize_h/2):floor(xsize_h/2)+xsize_img0),1);% 1=xsize_h/2
     end        
     
     % Resultado Final da Convolução
