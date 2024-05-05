@@ -1,6 +1,6 @@
 function [ K, R, C ] = decomposeQR(P)
 % Função para decompor a matriz de projeção P em K (matriz de calibração),
-% R (matriz de rotação) e C (vetor de translação).
+% R (matriz de rotação) e C (vetor de translação do Centro da câmera).
 
 % Extrair a submatriz esquerda 3x3 de P
 S = P(:, 1:3);
