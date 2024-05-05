@@ -14,7 +14,7 @@ a1 = A(1, 1:3);
 a2 = A(2, 1:3);
 a3 = A(3, 1:3);
 
-% Definir os valores de epsilon (±1) para facilitar os cálculos
+% Declaração de epsilon  
 eps = 1;
 
 % Calcular o fator de escala rho
