@@ -13,7 +13,7 @@ for i = 1:n
     A(2 * i, :) = [0, 0, 0, 0, w * XYZ(:, i)', -xy(2, i) * XYZ(:, i)'];
 end
 
-% Resolver para P usando SVD
+% Resolver para P usando Singular Value Decomposition 
 [~, ~, V] = svd(A);
 P = reshape(V(:, end), 4, 3)'; % Reformular o vetor coluna em uma matriz 4x3
 end
