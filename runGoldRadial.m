@@ -2,10 +2,10 @@ function [K, R, t, Kd, error] = runGoldRadial(xy, XYZ, Dec_type)
 % Função para executar a otimização da DLT com distorção radial usando busca áurea.
 
 % Normalizar os pontos de dados
-[xy_normalized, XYZ_normalized, T, U] = normalization(xy, XYZ);
+[xy_norm, XYZ_norm, xy_norm, XYZ_norm, T, U] = normalization(xy, XYZ);
 
 % Calcular a DLT
-[Pn] = dlt(xy_normalized, XYZ_normalized);
+[Pn] = dlt(xy_norm, XYZ_norm);
 
 % Valores iniciais dos coeficientes de distorção
 Kd = [0 0];
@@ -13,7 +13,7 @@ Kd = [0 0];
 % Minimizar o erro geométrico
 pn = [Pn(1, :) Pn(2, :) Pn(3, :) Kd];
 for i = 1:20
-    [pn] = fminsearch(@fminGoldRadial, pn, [], xy_normalized, XYZ_normalized);
+    [pn] = fminsearch(@fminGoldRadial, pn, [], xy_norm, XYZ_norm);
 end
 
 P = [pn(1:4); pn(5:8); pn(9:12)];
