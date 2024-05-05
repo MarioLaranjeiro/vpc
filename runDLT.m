@@ -1,5 +1,5 @@
 function [K, R, t, error] = runDLT(xy, XYZ, D_type)
-% Função para executar a técnica de DLT (Direct Linear Transformation).
+% Função  (Direct Linear Transformation).
 
 % Normalizar os pontos de dados
 [xy_norm, XYZ_norm, T, U] = normalization(xy, XYZ);
@@ -30,11 +30,11 @@ for i = 1:n
 end
 
 % Plotar os pontos originais e os pontos reprojetados na imagem
-IMG_NAME = 'images/image001.jpg'; % Nome do arquivo de imagem
-img_I = imread(IMG_NAME); % Ler a imagem
-imshow(img_I); % Mostrar a imagem
+IMG_NAME = 'images/image001.jpg';  
+img_I = imread(IMG_NAME);  
+imshow(img_I);  
 hold on;
-plot(xy(1, :), xy(2, :), 'rx', 'LineWidth', 1, 'MarkerSize', 10); % Plotar os pontos originais
-plot(xy_reproj(1, :), xy_reproj(2, :), 'bo', 'LineWidth', 2, 'MarkerSize', 10); % Plotar os pontos reprojetados
+plot(xy(1, :), xy(2, :), 'rx', 'LineWidth', 1, 'MarkerSize', 10); %   pontos originais
+plot(xy_reproj(1, :), xy_reproj(2, :), 'bo', 'LineWidth', 2, 'MarkerSize', 10); %  pontos reprojetados
 error = sum(sqrt(sum((xy_reproj - xy).^2, 1)).^2) / size(xy, 2); % Calcular o erro de reprojeção
 end
