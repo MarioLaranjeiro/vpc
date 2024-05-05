@@ -38,19 +38,16 @@ theta = acos(cos_theta);
 % Calcular os parâmetros alpha e beta
 alpha = eps_u * rho^2 * norm(cross(a1, a3)) * sin(theta);
 beta = eps_v * rho^2 * norm(cross(a2, a3)) * sin(theta);
-
-% Calcular o vetor r1
+ 
 r1 = (1 / norm(cross(a2, a3))) * cross(a2, a3);
+ r2 = cross(r3, r1);
 
-% Calcular o vetor r2
-r2 = cross(r3, r1);
-
-% Construir a matriz de calibração K
+%  matriz de calibração K
 K = [alpha, -alpha*cot(theta), u0; 
      0, beta/sin(theta), v0;
      0, 0, 1];
 
-% Construir a matriz de rotação R com os vetores r1, r2 e r3
+%   matriz de rotação R com os vetores r1, r2 e r3
 R = [r1; r2; r3];
 
 end
