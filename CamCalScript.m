@@ -6,23 +6,22 @@ img_I = imread(IMG_NAME);
 image(img_I);
 %axis off
 axis image
+%|||||||||||||||||||||||||||||||||||||||||||||Descomentar a linha do algoritmo que se quer testar|||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-% Decomposition Approach
+
 D_type = 'QR';
 %D_type = 'EXP';
-
- 
 %[xy, XYZ] = getpoints(IMG_NAME);
 
-%% === Task 2 DLT algorithm ===
+%% === DLT algorithm ===
 
 [K, R, t, error] = runDLT(xy, XYZ, D_type);
 
-%% === Task 3 Gold algorithm ===
+%% ===  Gold algorithm ===
 
 %[K, R, t, error] = runGold(xy, XYZ, D_type);
 
-%% === Task 4 Gold algorithm with radial distortion estimation ===
+%% === Gold algorithm w radial distortion estimation ===
 
 %[K, R, t, Kd, error] = runGoldRadial(xy, XYZ, D_type);
 
