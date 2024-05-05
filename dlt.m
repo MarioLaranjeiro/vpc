@@ -1,6 +1,6 @@
 function [P] = dlt(xy, XYZ)
 % Função para calcular a DLT (Direct Linear Transformation).
-% Os pontos xy e XYZ devem ser normalizados antes de chamar esta função.
+% Os pontos xy e XYZ devem estar normalizados  
 
 % Construir a matriz A
 n = size(xy, 2);
@@ -15,5 +15,5 @@ end
 
 % Resolver para P usando Singular Value Decomposition 
 [~, ~, V] = svd(A);
-P = reshape(V(:, end), 4, 3)'; % Reformular o vetor coluna em uma matriz 4x3
+P = reshape(V(:, end), 4, 3)'; % Reformular o vetor coluna em matriz 4x3
 end
