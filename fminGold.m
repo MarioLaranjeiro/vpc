@@ -16,5 +16,5 @@ for i = 1:n
 end
 
 % Calcular o valor da função de custo
-fcost = sum(sqrt(sum((xy_reprojected - xy(1:2, :)).^2, 1)).^2) / size(xy, 2);
+fcost = sum(sqrt(sum((xy_reproj - xy(1:2, :)).^2, 1)).^2) / size(xy, 2);
 end
