@@ -1,6 +1,5 @@
 function [K, R, t, error] = runGold(xy, XYZ, Dec_type)
-% Função para executar a otimização da DLT usando busca áurea.
-
+ 
 % Normalizar os pontos de dados
 [xy_norm, XYZ_norm, T, U] = normalization(xy, XYZ);
 
@@ -38,11 +37,11 @@ for i = 1:n
 end
 
 % Plotar os pontos originais e os pontos reprojetados na imagem
-IMG_NAME = 'images/image001.jpg'; % Nome do arquivo de imagem
-img_I = imread(IMG_NAME); % Ler a imagem
-imshow(img_I); % Mostrar a imagem
+IMG_NAME = 'images/image001.jpg';  
+img_I = imread(IMG_NAME); 
+imshow(img_I); 
 hold on;
 plot(xy(1, :), xy(2, :), 'rx', 'LineWidth', 1, 'MarkerSize', 10); % pontos originais
-plot(xy_reprojection(1, :), xy_reprojection(2, :), 'bo', 'Color', 'g', 'LineWidth', 2, 'MarkerSize', 10); % pontos reprojetados
-error = sum(sqrt(sum((xy_reprojection - xy).^2, 1)).^2) / size(xy, 2); % Calcular o erro de reprojeção
+plot(xy_reproj(1, :), xy_reproj(2, :), 'bo', 'Color', 'g', 'LineWidth', 2, 'MarkerSize', 10); % pontos reprojetados
+error = sum(sqrt(sum((xy_reproj - xy).^2, 1)).^2) / size(xy, 2); % Calcular o erro de reprojeção
 end
