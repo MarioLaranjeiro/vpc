@@ -1,4 +1,4 @@
-function f = fminGoldRadial(p, xy, XYZ, w)
+function fcost = fminGoldRadial(p, xy, XYZ, w)
  
 
 % Rearranjar p em uma matriz de projeção P
@@ -24,5 +24,5 @@ xy_d(3, :) = 1;
 
 % Calcular o valor da função de custo
 diff = xy_d - xy_new;
-f = (diff(:)' * diff(:)) / size(xy, 2);
+fcost = (diff(:)' * diff(:)) / size(xy, 2);
 end
