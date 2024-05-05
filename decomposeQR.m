@@ -14,7 +14,7 @@ K = inv(R_qr);
 K = K ./ K(end, end); % Normalizar K
 R = inv(Q_qr);
 
-% Calcular o centro da câmera C
+% Calcular o centro da câmera C pela ultima coluna de SVD
 [~, ~, V] = svd(P);
 C_matrix = V(:, end);
 
