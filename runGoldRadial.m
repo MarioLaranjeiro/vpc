@@ -43,15 +43,15 @@ L = 1 + Kd(1) * r.^2 + Kd(2) * r.^4;
 xy_d = L .* xy_ideal;
 xy_d(3, :) = 1;
 
-xy_reprojection = K * xy_d;
-xy_reprojection = xy_reprojection ./ xy_reprojection(3, :);
+xy_reproj = K * xy_d;
+xy_reproj = xy_reproj ./ xy_reproj(3, :);
 
 % Plotar os pontos originais e os pontos reprojetados na imagem
-IMG_NAME = 'images/image001.jpg'; % Nome do arquivo de imagem
-img_I = imread(IMG_NAME); % Ler a imagem
+IMG_NAME = 'images/image001.jpg'; 
+img_I = imread(IMG_NAME); 
 imshow(img_I); % Mostrar a imagem
 hold on;
-plot(xy(1, :), xy(2, :), 'rx', 'LineWidth', 1, 'MarkerSize', 10); % Plotar os pontos originais
-plot(xy_reprojection(1, :), xy_reprojection(2, :), 'bo', 'Color', 'y', 'LineWidth', 2, 'MarkerSize', 10); % Plotar os pontos reprojetados
-error = sum(sqrt(sum((xy_reprojection(1:2, :) - xy).^2, 1)).^2) / size(xy, 2); % Calcular o erro de reprojeção
+plot(xy(1, :), xy(2, :), 'rx', 'LineWidth', 1, 'MarkerSize', 10); %  pontos originais
+plot(xy_reproj(1, :), xy_reproj(2, :), 'bo', 'Color', 'y', 'LineWidth', 2, 'MarkerSize', 10); % Ppontos reprojetados
+error = sum(sqrt(sum((xy_reproj(1:2, :) - xy).^2, 1)).^2) / size(xy, 2); % Calcular o erro de reprojeção
 end
