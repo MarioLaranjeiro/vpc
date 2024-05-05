@@ -1,5 +1,5 @@
 function [ K, R, C ] = decomposeEXP(P)
-% Função para decompor a matriz de projeção P em K (matriz de calibração),
+% Função para decompor a matriz de projeção P usando a abordagem de mapa exponencial, em K (matriz de calibração),
 % R (matriz de rotação) e C (vetor de translação).
 
 % Extrair a matriz de calibração A e o vetor de translação b de P
