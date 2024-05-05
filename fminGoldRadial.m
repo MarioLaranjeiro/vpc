@@ -1,17 +1,15 @@
 function fcost = fminGoldRadial(p, xy, XYZ, w)
  
 
-% Rearranjar p em uma matriz de projeção P
+% Rearranjar p na matriz de projeção P
 P = [p(1:4); p(5:8); p(9:12)];
 
 % Extrair a matriz intrínseca da câmera K e os coeficientes de distorção radial Kd
 Kd = [p(13), p(14)];
 [K, R, C] = decomposeQR(P);
-
-% Calcular o erro geométrico ao quadrado com distorção radial
-
+ 
 % Calcular as coordenadas 2D transformadas
-xy_new = inv(K) * xy;
+xy_trans = inv(K) * xy;
 
 % Calcular as coordenadas ideais 2D com distorção radial
 XYZ(4, :) = 1;
@@ -23,6 +21,6 @@ xy_d = L .* xy_ideal;
 xy_d(3, :) = 1;
 
 % Calcular o valor da função de custo
-diff = xy_d - xy_new;
+diff = xy_d - xy_trans;
 fcost = (diff(:)' * diff(:)) / size(xy, 2);
 end
