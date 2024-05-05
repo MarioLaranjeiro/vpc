@@ -13,8 +13,8 @@ XYZ_centroid = mean(XYZ, 2);
 % Calcular a escala
 xyn = xy - xy_centroid;
 XYZn = XYZ - XYZ_centroid;
-xy_distances = sqrt(xyn(1, :).^2 + xyn(2, :).^2);
-XYZ_distances = sqrt(XYZn(1, :).^2 + XYZn(2, :).^2 + XYZn(3, :).^2);
+xy_dist= sqrt(xyn(1, :).^2 + xyn(2, :).^2);
+XYZ_dist = sqrt(XYZn(1, :).^2 + XYZn(2, :).^2 + XYZn(3, :).^2);
 xy_scale = mean(xy_distances) / sqrt(2);
 XYZ_scale = mean(XYZ_distances) / sqrt(3);
 
