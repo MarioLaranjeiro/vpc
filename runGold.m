@@ -2,15 +2,15 @@ function [K, R, t, error] = runGold(xy, XYZ, Dec_type)
 % Função para executar a otimização da DLT usando busca áurea.
 
 % Normalizar os pontos de dados
-[xy_normalized, XYZ_normalized, T, U] = normalization(xy, XYZ);
+[xy_norm, XYZ_norm, T, U] = normalization(xy, XYZ);
 
 % Calcular a DLT
-[Pn] = dlt(xy_normalized, XYZ_normalized);
+[Pn] = dlt(xy_norm, XYZ_norm);
 
 % Minimizar o erro geométrico
 pn = [Pn(1, :) Pn(2, :) Pn(3, :)];
 for i = 1:20
-    [pn] = fminsearch(@fminGold, pn, [], xy_normalized, XYZ_normalized);
+    [pn] = fminsearch(@fminGold, pn, [], xy_norm, XYZ_norm);
 end
 
 P = [pn(1:4); pn(5:8); pn(9:12)];
@@ -42,7 +42,7 @@ IMG_NAME = 'images/image001.jpg'; % Nome do arquivo de imagem
 img_I = imread(IMG_NAME); % Ler a imagem
 imshow(img_I); % Mostrar a imagem
 hold on;
-plot(xy(1, :), xy(2, :), 'rx', 'LineWidth', 1, 'MarkerSize', 10); % Plotar os pontos originais
-plot(xy_reprojection(1, :), xy_reprojection(2, :), 'bo', 'Color', 'g', 'LineWidth', 2, 'MarkerSize', 10); % Plotar os pontos reprojetados
+plot(xy(1, :), xy(2, :), 'rx', 'LineWidth', 1, 'MarkerSize', 10); % pontos originais
+plot(xy_reprojection(1, :), xy_reprojection(2, :), 'bo', 'Color', 'g', 'LineWidth', 2, 'MarkerSize', 10); % pontos reprojetados
 error = sum(sqrt(sum((xy_reprojection - xy).^2, 1)).^2) / size(xy, 2); % Calcular o erro de reprojeção
 end
